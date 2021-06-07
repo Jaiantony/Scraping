@@ -1,0 +1,332 @@
+from selenium import webdriver
+import time
+import pandas as pd
+import openpyxl
+# import xlsxwriter
+
+
+driver = webdriver.Chrome(executable_path='/home/anthony/Desktop/chromedriver')
+driver.get("https://www.commonobjective.co/login")
+email=driver.find_element_by_xpath("/html/body/div[2]/div/div/div/div/form/fieldset/input[1]")
+email.send_keys("haristerna@gmail.com")
+password=driver.find_element_by_xpath("/html/body/div[2]/div/div/div/div/form/fieldset/input[2]")
+password.send_keys("Zara$1998")
+login=driver.find_element_by_xpath("/html/body/div[2]/div/div/div/div/form/fieldset/div/div[1]/div/input")
+login.click()
+try:
+    close=driver.find_element_by_xpath("/html/body/div[5]/div/button/span")
+    close.click()
+except:
+    pass
+time.sleep(5)
+url_obj="https://www.commonobjective.co/movin-business"
+driver.get(url_obj)
+driver.implicitly_wait(10)
+try:
+    title=driver.find_element_by_xpath("/html/body/section/section[1]/div/div/div[1]/div/div/div/div[1]/div[2]/h1")
+    title=title.text
+except:
+    title="None"
+    pass
+try:
+    subtitle=driver.find_element_by_xpath("/html/body/section/section[1]/div/div/div[1]/div/div/div/div[1]/div[2]/p[2]")
+    subtitle=subtitle.text
+except:
+    subtitle="None"
+    pass
+try:
+    Founded_in=driver.find_element_by_xpath("/html/body/section/div[2]/div/div[2]/div/div[1]/div/div[2]/p")
+    Founded_in=Founded_in.text
+except:
+    Founded_in="None"
+    pass
+try:
+    Business_structure=driver.find_element_by_xpath("/html/body/section/div[3]/div/div[2]/div/div[1]/div/div[2]/ul/li/p")
+    Business_structure=Business_structure.text
+except:
+    Business_structure= "None"
+    pass
+
+try:
+    No_employees=driver.find_element_by_xpath("/html/body/section/div[3]/div/div[2]/div/div[1]/div/div[2]/ul/li/p")
+    No_employees= No_employees.text
+except:
+    No_employees="None"
+    pass
+try:
+    email_id=driver.find_element_by_xpath("/html/body/section/div[3]/div/div[2]/div/div[1]/div/div[4]/p[1]")
+    email_id=email_id.text
+except:
+    email_id="None"
+    pass
+try:
+    website=driver.find_element_by_xpath("/html/body/section/div[3]/div/div[2]/div/div[1]/div/div[4]/p[1]")
+    website=website.text
+except:
+    website="None"
+    pass
+try:
+    phone=driver.find_element_by_xpath("/html/body/section/div[3]/div/div[2]/div/div[1]/div/div[4]/p[3]")
+    phone=phone.text
+except:
+    phone="None"
+    pass
+try:
+    address=driver.find_element_by_xpath("/html/body/section/div[3]/div/div[2]/div/div[1]/div/div[4]/p[2]")
+    address=address.text
+except:
+    address="None"
+    pass
+
+try:
+    objective=driver.find_element_by_xpath("/html/body/section/div[3]/div/div[2]/div/div[3]/div/div/p")
+    objective= objective.text
+except:
+    objective="None"
+    pass
+try:
+    usp=driver.find_element_by_xpath("/html/body/section/div[3]/div/div[2]/div/div[2]/div/div[1]/p")
+    usp =usp.text
+except:
+    usp="None"
+    pass
+try:
+    Our_mission=driver.find_element_by_xpath("/html/body/section/div[3]/div/div[2]/div/div[2]/div/div[2]/p")
+    Our_mission= Our_mission.text
+except:
+    Our_mission="None"
+    pass
+
+try:
+    Company_practices=driver.find_element_by_xpath("/html/body/section/div[3]/div/div[2]/div/div[2]/div/div[3]")
+    Company_practices =Company_practices.text
+except:
+    Company_practices="None"
+    pass
+
+try:
+    Our_products=driver.find_element_by_xpath("/html/body/section/div[5]/div/div/div/div[2]/div/div[1]/div/div[1]/ul")
+    Our_products= Our_products.text
+except:
+    Our_products="None"
+    pass
+
+try:
+    Retail_wholesale=driver.find_element_by_xpath("/html/body/section/div[5]/div/div/div/div[2]/div/div[1]/div/div[2]/p")
+    Retail_wholesale= Retail_wholesale.text
+except:
+    Retail_wholesale="None"
+    pass
+try:
+    Price_range_wholesale=driver.find_element_by_xpath("/html/body/section/div[5]/div/div/div/div[2]/div/div[1]/div/div[5]/p")
+    print(Price_range_wholesale.text)
+except:
+    Price_range_wholesale="None"
+    pass
+
+try:
+    price_point=driver.find_element_by_xpath("/html/body/section/div[5]/div/div/div/div[2]/div/div[1]/div/div[3]/p")
+    price_point= price_point.text
+except:
+    price_point="None"
+    pass
+
+try:
+    Stockists=driver.find_element_by_xpath("/html/body/section/div[5]/div/div/div/div[2]/div/div[1]/div/div[6]/p")
+    Stockists=Stockists.text
+except:
+    Stockists="None"
+    pass
+
+try:
+    moq=driver.find_element_by_xpath("/html/body/section/div[5]/div/div/div/div[2]/div/div[1]/div/div[4]/p")
+    print(moq.text)
+except:
+    moq="None"
+    pass
+
+try:
+    Online_offline=driver.find_element_by_xpath("/html/body/section/div[5]/div/div/div/div[2]/div/div[1]/div/div[7]/p")
+    Online_offline=Online_offline.text
+
+except:
+    Online_offline="None"
+    pass
+
+try:
+    Shipping_information=driver.find_element_by_xpath("/html/body/section/div[5]/div/div/div/div[2]/div/div[1]/div/div[8]/p")
+    Shipping_information=Shipping_information.text
+
+except:
+    Shipping_information="None"
+    pass
+
+try:
+    Energy_Efficiency=driver.find_element_by_xpath("/html/body/section/div[6]/div/div/div/div[2]/div/div[1]/div[1]/div/p")
+    Energy_Efficiency=Energy_Efficiency.text
+
+except:
+    Energy_Efficiency="None"
+    pass
+
+try:
+    Water_Efficiency =driver.find_element_by_xpath("/html/body/section/div[6]/div/div/div/div[2]/div/div[1]/div[2]/div/p")
+    Water_Efficiency=Water_Efficiency.text
+except:
+    Water_Efficiency="None"
+    pass
+
+try:
+    Chemical_management=driver.find_element_by_xpath("/html/body/section/div[6]/div/div/div/div[2]/div/div[1]/div[3]/div/p")
+    Chemical_management=Chemical_management.text
+except:
+    Chemical_management="None"
+    pass
+
+try:
+    Pollution_Reduction=driver.find_element_by_xpath("/html/body/section/div[6]/div/div/div/div[2]/div/div[1]/div[4]/div/p")
+    Pollution_Reduction=Pollution_Reduction.text
+except:
+    Pollution_Reduction="None"
+    pass
+try:
+    Recycling_Waste=driver.find_element_by_xpath("/html/body/section/div[6]/div/div/div/div[2]/div/div[1]/div[5]/div/p")
+    Recycling_Waste=Recycling_Waste.text
+except:
+    Recycling_Waste="None"
+    pass
+
+try:
+    Organic_Materials=driver.find_element_by_xpath("/html/body/section/div[6]/div/div/div/div[2]/div/div[1]/div[6]/div/p")
+    Organic_Materials =Organic_Materials.text
+except:
+    Organic_Materials="None"
+    pass
+
+try:
+    Environmentally_Friendly =driver.find_element_by_xpath("/html/body/section/div[6]/div/div/div/div[2]/div/div[1]/div[7]/div/p")
+    Environmentally_Friendly=Environmentally_Friendly.text
+except:
+    Environmentally_Friendly="None"
+    pass
+
+try:
+    Animal_Friendly =driver.find_element_by_xpath("/html/body/section/div[6]/div/div/div/div[2]/div/div[1]/div[8]/div/p")
+    Animal_Friendly=Animal_Friendly.text
+except:
+    Animal_Friendly="None"
+    pass
+
+try:
+    Sustainable_Business  =driver.find_element_by_xpath("/html/body/section/div[6]/div/div/div/div[2]/div/div[1]/div[9]/div/p")
+    Sustainable_Business=Sustainable_Business.text
+except:
+    Sustainable_Business="None"
+    pass
+
+try:
+    Fair_Trade =driver.find_element_by_xpath("/html/body/section/div[6]/div/div/div/div[2]/div/div[1]/div[10]/div/p")
+    Fair_Trade=Fair_Trade.text
+except:
+    Fair_Trade="None"
+    pass
+
+try:
+    Decent_Working  =driver.find_element_by_xpath("/html/body/section/div[6]/div/div/div/div[2]/div/div[1]/div[11]/div/p")
+    Decent_Working=Decent_Working.text
+except:
+    Decent_Working="None"
+    pass
+
+try:
+    Ethical_Sourcing =driver.find_element_by_xpath("/html/body/section/div[6]/div/div/div/div[2]/div/div[1]/div[12]/div/p")
+    Ethical_Sourcing=Ethical_Sourcing.text
+except:
+    Ethical_Sourcing="None"
+    pass
+
+
+try:
+    Supporting_Traditional =driver.find_element_by_xpath("/html/body/section/div[6]/div/div/div/div[2]/div/div[1]/div[13]/div/p")
+    Supporting_Traditional=Supporting_Traditional.text
+except:
+    Supporting_Traditional="None"
+    pass
+
+try:
+    Sustainability_Objectives =driver.find_element_by_xpath("/html/body/section/div[6]/div/div/div/div[2]/div/div[2]/div[1]/div[2]/ol")
+    Sustainability_Objectives=Sustainability_Objectives.text
+except:
+    Sustainability_Objectives="None"
+    pass
+
+try:
+    Certifications =driver.find_element_by_xpath("/html/body/section/div[6]/div/div/div/div[2]/div/div[2]/div[1]/div[3]/ul")
+    Certifications=Certifications.text
+except:
+    Certifications="None"
+    pass
+
+try:
+    Reports_Policies =driver.find_element_by_xpath("/html/body/section/div[6]/div/div/div/div[2]/div/div[2]/div[1]/div[3]/ul")
+    Reports_Policies=Reports_Policies.text
+except:
+    Reports_Policies="None"
+    pass
+
+try:
+    Sustainability_Roadmap =driver.find_element_by_xpath("/html/body/section/div[6]/div/div/div/div[2]/div/div[2]/div[2]/div[2]/ul")
+    Sustainability_Roadmap=Sustainability_Roadmap.text
+except:
+    Sustainability_Roadmap="None"
+    pass
+driver.quit()
+
+
+# workbook = xlsxwriter.Workbook('hello.xlsx')
+# worksheet = workbook.add_worksheet()
+# worksheet.write('A1',(title ))
+# worksheet.write('B1',(subtitle))
+# worksheet.write('C1',(Founded_in))
+# worksheet.write('D1',(Business_structure))
+# worksheet.write('E1',(No_employees))
+# worksheet.write('F1',(email_id))
+# worksheet.write('G1',(website))
+# worksheet.write('H1',(phone))
+# worksheet.write('I1',(address))
+# worksheet.write('J1',(objective))
+# worksheet.write('K1',(usp))
+# worksheet.write('L1',(Our_mission))
+# worksheet.write('M1',(Company_practices))
+# worksheet.write('N1',(Our_products))
+# worksheet.write('O1',(Retail_wholesale))
+# worksheet.write('P1',(Price_range_wholesale))
+# worksheet.write('Q1',(price_point))
+# worksheet.write('R1',(Stockists))
+# worksheet.write('S1',(moq))
+# worksheet.write('T1',(Online_offline))
+# worksheet.write('U1',(Shipping_information))
+# worksheet.write('V1',(Energy_Efficiency))
+# worksheet.write('W1',(Water_Efficiency))
+# worksheet.write('X1',(Chemical_management))
+# worksheet.write('Y1',(Pollution_Reduction))
+# worksheet.write('Z1',(Recycling_Waste))
+# worksheet.write('AA',(Organic_Materials))
+# worksheet.write('AB',(Environmentally_Friendly))
+# worksheet.write('AC',(Animal_Friendly))
+# worksheet.write('AD',(Sustainable_Business))
+# worksheet.write('AE',(Fair_Trade))
+# worksheet.write('AF',(Decent_Working))
+# worksheet.write('AG',(Ethical_Sourcing))
+# worksheet.write('AH',(Supporting_Traditional))
+# worksheet.write('AI',(Sustainability_Objectives))
+# worksheet.write('AJ',(Certifications))
+# worksheet.write('AK',(Reports_Policies))
+# worksheet.write('AL',(Sustainability_Roadmap))
+# worksheet.write('AM',(url_obj))
+#
+# workbook.close()
+
+
+df = pd.DataFrame([str(title),str(subtitle),str(Founded_in),str(Business_structure),str(No_employees),str(email_id),str(website),str(phone),])
+df.to_excel('pandas_to_excel.xlsx', sheet_name='new_sheet_name')
